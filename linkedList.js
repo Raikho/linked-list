@@ -37,6 +37,23 @@ class LinkedList {
         }
         return size;
     }
+
+    toString() {
+        let node = this.head;
+        if (!this.head)
+            return 'empty';
+
+        // First value
+        let string = '( ' + node.value + ' )';
+
+        // Subsequent values
+        while(node.next) {
+            node = node.next;
+            string += ' -> ( ' + node.value + ' )'
+        }
+
+        return string;
+    }
 }
 
 let list = new LinkedList;
@@ -44,6 +61,8 @@ list.append(4);
 list.append(6);
 list.append(8);
 list.prepend(2);
+
+console.log(list.toString());
 
 console.log(list);
 console.log(list.size);
