@@ -68,6 +68,28 @@ class LinkedList {
         prevNode.next = null;
     }
 
+    contains(value) {
+        let node = this.head;
+        while (node) {
+            if (node.value === value)
+                return true;
+            node = node.next;
+        }
+        return false;
+    }
+
+    find(value) {
+        let node = this.head;
+        let index = 0;
+        while(node) {
+            if (node.value === value)
+                return index;
+            index++;
+            node = node.next;
+        }
+        return 'not found';
+    }
+
     toString() {
         let node = this.head;
         if (!this.head)
@@ -98,6 +120,9 @@ console.log('at index 0: ', list.at(0));
 console.log('at index 1: ', list.at(1));
 console.log('at index 2: ', list.at(2));
 console.log('at index 3: ', list.at(3));
+
+console.log('contains 8?: ', list.contains(8));
+console.log('finding 6 at index: : ', list.find(6));
 
 console.log('popping...');
 list.pop();
