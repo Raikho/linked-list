@@ -55,6 +55,8 @@ class LinkedList {
     }
 
     pop() {
+        if (!this.head)
+            return;
         if (!this.head.next) {
             this.head = null;
             return;
@@ -90,6 +92,32 @@ class LinkedList {
         return 'not found';
     }
 
+    insertAt(value, index) {
+        let node = this.head;
+
+        if (!node)
+            return;
+        if (index == 0) {
+            this.head = new Node(value);
+            this.head.next = node;
+            return;
+        }
+
+        let size = this.size;
+        if (index >= size - 1) {
+            this.append(value);
+            return;
+        }
+
+        let prevNode = node;
+        for (let i = 0; i < index; i++) {
+            prevNode = node;
+            node = node.next;
+        }
+        prevNode.next = new Node(value);
+        prevNode.next.next = node;
+    }
+
     toString() {
         let node = this.head;
         if (!this.head)
@@ -110,10 +138,9 @@ list.append(6);
 list.append(8);
 list.prepend(2);
 
-console.log(list.toString());
+console.log('list toString(): ', list.toString());
+console.log('list size: ', list.size);
 
-console.log(list);
-console.log(list.size);
 console.log('head: ', list.head);
 console.log('tail: ', list.tail);
 console.log('at index 0: ', list.at(0));
@@ -124,6 +151,13 @@ console.log('at index 3: ', list.at(3));
 console.log('contains 8?: ', list.contains(8));
 console.log('finding 6 at index: : ', list.find(6));
 
+console.log('inserting 5 at index 2...');
+list.insertAt(5, 2);
+console.log('list toString(): ', list.toString());
+
+console.log('popping...');
+list.pop();
+console.log(list.toString());
 console.log('popping...');
 list.pop();
 console.log(list.toString());
