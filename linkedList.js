@@ -118,6 +118,23 @@ class LinkedList {
         prevNode.next.next = node;
     }
 
+    removeAt(index) {
+        if (index == 0) {
+            this.head = this.head.next;
+            return;
+        }
+        if (index >= this.size)
+            return;
+
+        let node = this.head;
+        let prevNode = node;
+        for (let i = 0; i < index; i++) {
+            prevNode = node;
+            node = node.next;
+        }
+        prevNode.next = node.next;
+    }
+
     toString() {
         let node = this.head;
         if (!this.head)
@@ -154,21 +171,22 @@ console.log('finding 6 at index: : ', list.find(6));
 console.log('inserting 5 at index 2...');
 list.insertAt(5, 2);
 console.log('list toString(): ', list.toString());
+console.log('removing at index 2...');
+list.removeAt(2);
+console.log('list toString(): ', list.toString());
 
 console.log('popping...');
 list.pop();
-console.log(list.toString());
+console.log('list toString(): ', list.toString());
 console.log('popping...');
 list.pop();
-console.log(list.toString());
+console.log('list toString(): ', list.toString());
 console.log('popping...');
 list.pop();
-console.log(list.toString());
+console.log('list toString(): ', list.toString());
 console.log('popping...');
 list.pop();
-console.log(list.toString());
-console.log('popping...');
-list.pop();
-console.log(list.toString());
+console.log('list toString(): ', list.toString());
+
 
 
