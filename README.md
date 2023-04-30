@@ -29,4 +29,4 @@ Implements a Linked List data structure in javascript. Contains a LinkedList and
 
 
 ## How to use
-Have nodejs installed. In the directory, type in node linkedList.js to see the testing results of the program.
+Have nodejs installed. In the directory, type in `node linkedList.js` to see the testing results of the program.
